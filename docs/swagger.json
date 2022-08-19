@@ -1,0 +1,87 @@
+{
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "swagger": "2.0",
+    "info": {
+        "description": "GoTemplate API",
+        "title": "GoTemplate API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "host": "localhost:8585",
+    "basePath": "/api",
+    "paths": {
+        "/v1/sample/hello-world": {
+            "get": {
+                "description": "Get a hello world string",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sample"
+                ],
+                "summary": "Get a hello world string",
+                "operationId": "get-hello-world",
+                "responses": {}
+            }
+        },
+        "/v1/sample/users/{id}": {
+            "get": {
+                "description": "Get a user by ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "sample"
+                ],
+                "summary": "Get a user by ID",
+                "operationId": "get-user-by-id",
+                "parameters": [
+                    {
+                        "type": "number",
+                        "description": "User ID",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/dto.UserDto"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "dto.UserDto": {
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "ApiKeyAuth": {
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}
